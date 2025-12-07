@@ -1,0 +1,1 @@
+"A responsive hotel landing page built with HTML and CSS."

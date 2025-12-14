@@ -1,202 +1,202 @@
 /* General Setup */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #333;
 }
 
 /* Container for Centering Content */
 main {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 0 15px;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 15px;
 }
 
 /* Typography and Headings */
 h1 {
-    font-size: 2.5em;
-    color: #004d99; /* Deep Blue */
-    margin: 0;
+  font-size: 2.5em;
+  color: #004d99; /* Deep Blue */
+  margin: 0;
 }
 
 h2 {
-    font-size: 2em;
-    color: #004d99;
-    margin-bottom: 20px;
-    padding-top: 20px;
-    border-bottom: 2px solid #ddd;
+  font-size: 2em;
+  color: #004d99;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  border-bottom: 2px solid #ddd;
 }
 
 h3 {
-    font-size: 1.5em;
-    color: #333;
-    margin-top: 0;
-    margin-bottom: 10px;
+  font-size: 1.5em;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 
 /* Header and Navigation */
 header {
-    background-color: #004d99;
-    color: white;
-    padding: 15px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #004d99;
+  color: white;
+  padding: 15px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 header nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 header nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 8px 15px;
-    border-radius: 4px;
-    transition: background-color 0.3s;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 15px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
 }
 
 header nav a:hover {
-    background-color: #0066cc;
+  background-color: #0066cc;
 }
 
 /* Section Styling */
 section {
-    padding: 30px;
-    margin-bottom: 30px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  padding: 30px;
+  margin-bottom: 30px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 /* Home Section Specifics */
 #home {
-    text-align: center;
-    background-color: #e6f0ff; /* Light Blue background */
+  text-align: center;
+  background-color: #e6f0ff; /* Light Blue background */
 }
 
 /* Rooms Section (Using Flexbox for simple responsiveness) */
 #rooms {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-around;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
 }
 
 #rooms > div {
-    flex: 1 1 300px; /* Allows 3 rooms per row on desktop, 1 on mobile */
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    transition: transform 0.2s;
+  flex: 1 1 300px; /* Allows 3 rooms per row on desktop, 1 on mobile */
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  transition: transform 0.2s;
 }
 
 #rooms > div:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
 }
 
 #rooms ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    margin-top: 15px;
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-top: 15px;
 }
 
 #rooms li {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 /* Contact and Form */
 #contact {
-    background-color: #f9f9f9;
+  background-color: #f9f9f9;
 }
 
 #contact form {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
-    margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  margin-top: 20px;
 }
 
 #contact label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
 }
 
 #contact input[type="text"],
 #contact input[type="email"],
 #contact textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 #contact button {
-    background-color: #004d99;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1.1em;
-    transition: background-color 0.3s;
+  background-color: #004d99;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: background-color 0.3s;
 }
 
 #contact button:hover {
-    background-color: #0066cc;
+  background-color: #0066cc;
 }
 
 /* Booking Link */
 #booking {
-    text-align: center;
-    background-color: #004d99;
-    color: white;
+  text-align: center;
+  background-color: #004d99;
+  color: white;
 }
 
 #booking a {
-    display: inline-block;
-    background-color: #ffc107; /* Yellow Accent */
-    color: #004d99;
-    font-weight: bold;
-    padding: 10px 25px;
-    border-radius: 5px;
-    text-decoration: none;
-    margin-top: 10px;
-    transition: background-color 0.3s;
+  display: inline-block;
+  background-color: #ffc107; /* Yellow Accent */
+  color: #004d99;
+  font-weight: bold;
+  padding: 10px 25px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 10px;
+  transition: background-color 0.3s;
 }
 
 #booking a:hover {
-    background-color: #ff9800;
+  background-color: #e69a00;
 }
 
 /* Footer */
 footer {
-    text-align: center;
-    padding: 15px;
-    background-color: #ddd;
-    color: #666;
-    margin-top: 20px;
+  text-align: center;
+  padding: 15px;
+  background-color: #ddd;
+  color: #666;
+  margin-top: 20px;
 }
 
 /* Mobile Adjustments (Media Query for small screens) */
 @media (max-width: 600px) {
-    header nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        margin-top: 10px;
-    }
-    
-    #rooms > div {
-        flex-basis: 100%; /* Rooms stack one by one on small screens */
-    }
+  header nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  #rooms > div {
+    flex-basis: 100%; /* Rooms stack one by one on small screens */
+  }
 }

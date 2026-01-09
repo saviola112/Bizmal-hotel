@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="style.css">
     <title>BIZMAL HOTEL - Your Next Stay</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header>
@@ -12,124 +12,103 @@
       <nav>
         <ul>
           <li><a href="#home">Home</a></li>
-          <li><a href="#rooms">Rooms & Suites</a></li>
-          <li><a href="#contact">Contact Us</a></li>
-          <li><a href="#booking">Book Now</a></li>
+          <li><a href="#rooms">Rooms</a></li>
+          <li><a href="#booking">Booking</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
     </header>
 
     <main>
       <section id="home">
-        <h2>Welcome to BIZMAL HOTEL</h2>
+        <h2 id="welcomeGreeting">Welcome to BIZMAL HOTEL</h2>
         <p>
-          Experience comfort and great service right in the heart of the city.
-          We look forward to hosting you!
+          Experience luxury in the heart of Lagos. Check-in: 1:00 PM |
+          Check-out: 12:00 PM
         </p>
-        <p>Check-in time: 1:00 PM | Check-out time: 12:00 PM</p>
       </section>
 
       <section id="rooms">
         <h2>Our Accommodations</h2>
-
         <div>
           <h3>VIP Student</h3>
-          <p>
-            The absolute basic for a quick stop. It's clean, it's cheap, and it
-            gets the job done. Perfect for low budget customer.
-          </p>
-          <ul>
-            <li>Regular bedzise</li>
-            <li>Private Bathroom</li>
-            <li>Starting at #7000</li>
-          </ul>
+          <p>Starting at #7,000</p>
         </div>
-
         <div>
           <h3>VIP Standard</h3>
-          <p>
-            A step up! Get your own private bathroom and a comfy queen bed for
-            better rest and comfort.
-          </p>
-          <ul>
-            <li>Queen Bed</li>
-            <li>Private Bathroom</li>
-            <li>Starting at #25000</li>
-          </ul>
+          <p>Starting at #25,000</p>
         </div>
-
         <div>
           <h3>VIP Major</h3>
-          <p>
-            The business major is for business oriented people. Larger desk
-            space, a sitting area, and a mini-fridge for drinks and snacks.
-          </p>
-          <ul>
-            <li>King-sized Bed</li>
-            <li>Mini-fridge</li>
-            <li>Complimentary Coffee/Tea</li>
-            <li>Starting at #68000</li>
-          </ul>
+          <p>Starting at #68,000</p>
         </div>
-
         <div>
           <h3>VIP Regular</h3>
-          <p>
-            This is more home based than luxury to give you that home regular feel for relaxation.
-          </p>
-          <ul>
-            <li>Full-sized Bed</li>
-            <li>Cable TV</li>
-            <li>Daily Housekeeping</li>
-            <li>Starting at #100000/night</li>
-          </ul>
+          <p>Starting at #100,000</p>
         </div>
-
         <div>
           <h3>VIP Desperate</h3>
-          <p>
-            You dont mind the small space with a unique look of luxury then this room is for you.
-          </p>
-          <ul>
-            <li>Private bathroom</li>
-            <li>Free wifi connection</li>
-            <li>Starting at #700000</li>
-          </ul>
+          <p>Starting at #700,000</p>
         </div>
-      </section>
-
-      <section id="contact">
-        <h2>Get in Touch</h2>
-        <p>Ready to book or have questions? Reach out to us!</p>
-        <p><strong>Address:</strong> 33 adeboyega avenue off majid road ebutemeta Lagos</p>
-        <p><strong>Phone:</strong> 07067886494</p>
-        <p><strong>Email:</strong> Ekewubas@gmail.com</p>
-
-        <form action="#" method="POST">
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" /><br /><br />
-
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" /><br /><br />
-
-          <label for="message">Message:</label>
-          <textarea id="message" name="message"></textarea><br /><br />
-
-          <button type="submit">Send Inquiry</button>
-        </form>
       </section>
 
       <section id="booking">
-        <h2>Quick Booking Link</h2>
-        <p>Click the link below to go to our reservation page.</p>
-        <a href="placeholder-booking-link.html"
-          >Click Here to Reserve Your Room!</a
-        >
+        <h2>Quick Booking Calculator</h2>
+        <p>Get an instant estimate for your stay below.</p>
+
+        <div class="calculator-box">
+          <label for="roomSelect">Choose Your Room Type:</label>
+          <select id="roomSelect">
+            <option value="0">--Select a Room--</option>
+            <option value="7000">VIP Student (#7,000)</option>
+            <option value="25000">VIP Standard (#25,000)</option>
+            <option value="68000">VIP Major (#68,000)</option>
+            <option value="100000">VIP Regular (#100,000)</option>
+            <option value="700000">VIP Desperate (#700,000)</option>
+          </select>
+
+          <label for="nightsInput">Number of Nights:</label>
+          <input type="number" id="nightsInput" min="1" value="1" />
+
+          <p>
+            <strong>Estimated Total: #<span id="totalPrice">0</span></strong>
+          </p>
+        </div>
+        <a href="#contact" id="reservationBtn">Proceed to Inquiry</a>
+      </section>
+
+      <section id="contact">
+        <h2>Send an Inquiry</h2>
+        <form id="inquiryForm">
+          <label for="name">Full Name:</label>
+          <input type="text" id="name" placeholder="Enter your name" required />
+
+          <label for="email">Email Address:</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="email@example.com"
+            required
+          />
+
+          <label for="message">Your Message:</label>
+          <textarea
+            id="message"
+            rows="4"
+            placeholder="How can we help you?"
+            required
+          ></textarea>
+
+          <button type="submit">Send Inquiry</button>
+        </form>
+        <div id="formFeedback"></div>
       </section>
     </main>
 
     <footer>
-      <p>&copy; 2025 BIZMAL HOTEL. All rights reserved.</p>
+      <p>&copy; 2026 BIZMAL HOTEL. 33 Adeboyega Avenue, Lagos.</p>
     </footer>
+
+    <script src="script.js"></script>
   </body>
 </html>

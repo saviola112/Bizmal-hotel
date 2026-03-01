@@ -1,424 +1,370 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>BIZMAL HOTEL - Your Next Stay</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
     <style>
       .hero {
-        background-image:
-          linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
-          url("https://images.unsplash.com/photo-1566073771259-6a8506099945");
-        background-size: cover;
-        background-position: center;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+          url("https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920")
+            center/cover no-repeat;
+        min-height: 100vh;
       }
-      .room-card {
-        transition: all 0.4s ease;
+      .room-teaser:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        transition: all 0.35s ease;
       }
-      .room-card:hover {
-        transform: translateY(-12px);
-        box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+      .room-teaser .card-img-top {
+        height: 220px;
+        object-fit: cover;
       }
     </style>
   </head>
-  <body class="bg-zinc-950 text-white">
+  <body class="bg-black text-white">
     <!-- Navbar -->
-    <header class="bg-black sticky top-0 z-50">
-      <div
-        class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center"
-      >
-        <h1 class="text-4xl font-bold text-amber-400">BIZMAL HOTEL</h1>
-        <nav class="hidden md:block">
-          <ul class="flex gap-10 text-sm uppercase tracking-wider">
-            <li>
-              <a href="#home" class="hover:text-amber-400 transition">Home</a>
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-black fixed-top shadow-sm"
+    >
+      <div class="container">
+        <a class="navbar-brand fw-bold fs-3 text-warning" href="#"
+          >BIZMAL HOTEL</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link px-3" href="#home">Home</a>
             </li>
-            <li>
-              <a href="#rooms" class="hover:text-amber-400 transition">Rooms</a>
+            <li class="nav-item">
+              <a class="nav-link px-3" href="#rooms">Rooms</a>
             </li>
-            <li>
-              <a href="#booking" class="hover:text-amber-400 transition"
-                >Booking</a
-              >
+            <li class="nav-item">
+              <a class="nav-link px-3" href="#booking">Booking</a>
             </li>
-            <li>
-              <a href="#contact" class="hover:text-amber-400 transition"
-                >Contact</a
-              >
+            <li class="nav-item">
+              <a class="nav-link px-3" href="#contact">Contact</a>
             </li>
           </ul>
-        </nav>
-        <button id="mobile-btn" class="md:hidden text-4xl text-amber-400">
-          ☰
-        </button>
+        </div>
       </div>
-    </header>
+    </nav>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-zinc-900 py-6">
-      <ul class="flex flex-col items-center gap-6 text-lg">
-        <li><a href="#home" class="hover:text-amber-400">Home</a></li>
-        <li><a href="#rooms" class="hover:text-amber-400">Rooms</a></li>
-        <li><a href="#booking" class="hover:text-amber-400">Booking</a></li>
-        <li><a href="#contact" class="hover:text-amber-400">Contact</a></li>
-      </ul>
-    </div>
+    <!-- Hero -->
+    <section id="home" class="hero d-flex align-items-center text-center">
+      <div class="container pt-5">
+        <h2 class="display-3 fw-bold mb-4">Welcome to BIZMAL HOTEL</h2>
+        <p class="lead mb-4">
+          Experience comfort and great service right in the heart of the
+          city.<br />We look forward to hosting you!
+        </p>
+        <p class="fs-5 text-warning">
+          Check-in time: 1:00 PM | Check-out time: 12:00 PM
+        </p>
+      </div>
+    </section>
 
-    <main>
-      <!-- Hero -->
-      <section
-        id="home"
-        class="hero h-screen flex items-center justify-center text-center"
-      >
-        <div class="max-w-3xl px-6">
-          <h2 id="welcomeGreeting" class="text-5xl md:text-7xl font-bold mb-6">
-            Welcome to BIZMAL HOTEL
-          </h2>
-          <p class="text-xl md:text-2xl mb-8">
-            Experience comfort and great service right in the heart of the
-            city.<br />We look forward to hosting you!
-          </p>
-          <p class="text-amber-300 text-lg">
-            Check-in time: 1:00 PM | Check-out time: 12:00 PM
-          </p>
-        </div>
-      </section>
-
-      <!-- Rooms -->
-      <section id="rooms" class="max-w-7xl mx-auto px-6 py-20">
-        <h2 class="text-5xl font-bold text-center mb-16">Our Accommodations</h2>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div class="room-card bg-zinc-900 rounded-3xl overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b"
-              class="w-full h-64 object-cover"
-              alt="VIP Student"
-            />
-            <div class="p-8">
-              <h3 class="text-2xl font-semibold mb-3">VIP Student</h3>
-              <p>
-                The absolute basic for a quick stop. It's clean, it's cheap, and
-                it gets the job done. Perfect for low budget customers.
-              </p>
-              <ul class="mt-6 space-y-3">
-                <li class="flex items-center gap-3">
-                  <i class="fas fa-check text-emerald-400"></i> Regular bedsize
-                </li>
-                <li class="flex items-center gap-3">
-                  <i class="fas fa-check text-emerald-400"></i> Private Bathroom
-                </li>
-                <li class="flex items-center gap-3">
-                  <i class="fas fa-check text-emerald-400"></i> Starting at
-                  ₦7,000/ per night
-                </li>
-              </ul>
-            </div>
+    <!-- Rooms Teasers (links to detailed pages) -->
+    <section id="rooms" class="py-5 bg-black">
+      <div class="container">
+        <h2 class="text-center display-5 fw-bold mb-5">Our Accommodations</h2>
+        <div class="row g-4">
+          <!-- VIP Student -->
+          <div class="col-md-6 col-lg-4">
+            <a
+              href="rooms/vip-student.html"
+              class="text-decoration-none text-white"
+            >
+              <div class="room-teaser card bg-dark border-0 shadow h-100">
+                <img
+                  src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800"
+                  class="card-img-top"
+                  alt="VIP Student"
+                />
+                <div class="card-body">
+                  <h5 class="card-title text-warning">VIP Student</h5>
+                  <p class="card-text text-secondary">
+                    Basic, clean & budget-friendly stay
+                  </p>
+                  <p class="fw-bold text-warning">From ₦7,000 / night</p>
+                </div>
+              </div>
+            </a>
           </div>
 
-          <div class="room-card bg-zinc-900 rounded-3xl overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1611892440504-42a792e24d32"
-              class="w-full h-64 object-cover"
-              alt="VIP Standard"
-            />
-            <div class="p-8">
-              <h3 class="text-2xl font-semibold mb-3">VIP Standard</h3>
-              <p>
-                A step up! Get your own private bathroom and a comfy queen bed
-                for better rest and comfort.
-              </p>
-              <ul class="mt-6 space-y-3">
-                <li class="flex items-center gap-3">
-                  <i class="fas fa-check text-emerald-400"></i> Queen Bed
-                </li>
-                <li class="flex items-center gap-3">
-                  <i class="fas fa-check text-emerald-400"></i> Private Bathroom
-                </li>
-                <li class="flex items-center gap-3">
-                  <i class="fas fa-check text-emerald-400"></i> Starting at
-                  ₦25,000/ per night
-                </li>
-              </ul>
-            </div>
+          <!-- VIP Standard -->
+          <div class="col-md-6 col-lg-4">
+            <a
+              href="rooms/vip-standard.html"
+              class="text-decoration-none text-white"
+            >
+              <div class="room-teaser card bg-dark border-0 shadow h-100">
+                <img
+                  src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800"
+                  class="card-img-top"
+                  alt="VIP Standard"
+                />
+                <div class="card-body">
+                  <h5 class="card-title text-warning">VIP Standard</h5>
+                  <p class="card-text text-secondary">
+                    Comfortable queen bed & private bath
+                  </p>
+                  <p class="fw-bold text-warning">From ₦25,000 / night</p>
+                </div>
+              </div>
+            </a>
           </div>
 
-          <div class="room-card bg-zinc-900 rounded-3xl overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1566073771259-6a8506099945"
-              class="w-full h-64 object-cover"
-              alt="VIP Major"
-            />
-            <div class="p-8">
-              <h3 class="text-2xl font-semibold mb-3">VIP Major</h3>
-              <p>
-                The business major is for business-oriented people. Larger desk
-                space, a sitting area, and a mini-fridge for drinks and snacks.
-              </p>
-              <ul class="mt-6 space-y-3">
-                <li class="flex items-center gap-3">
-                  <i class="fas fa-check text-emerald-400"></i> King-sized Bed
-                </li>
-                <li class="flex items-center gap-3">
-                  <i class="fas fa-check text-emerald-400"></i> Mini-fridge
-                </li>
-                <li class="flex items-center gap-3">
-                  <i class="fas fa-check text-emerald-400"></i> Complimentary
-                  Coffee/Tea
-                </li>
-                <li class="flex items-center gap-3">
-                  <i class="fas fa-check text-emerald-400"></i> Starting at
-                  ₦68,000/ per night
-                </li>
-              </ul>
-            </div>
+          <!-- VIP Major -->
+          <div class="col-md-6 col-lg-4">
+            <a
+              href="rooms/vip-major.html"
+              class="text-decoration-none text-white"
+            >
+              <div class="room-teaser card bg-dark border-0 shadow h-100">
+                <img
+                  src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800"
+                  class="card-img-top"
+                  alt="VIP Major"
+                />
+                <div class="card-body">
+                  <h5 class="card-title text-warning">VIP Major</h5>
+                  <p class="card-text text-secondary">
+                    Business room with desk & mini-fridge
+                  </p>
+                  <p class="fw-bold text-warning">From ₦68,000 / night</p>
+                </div>
+              </div>
+            </a>
           </div>
 
-          <div class="room-card bg-zinc-900 rounded-3xl overflow-hidden">
-            <img
-              src="./rooms/Vip Regular.png"
-              class="w-full h-64 object-cover"
-              alt="VIP Regular"
-            />
-            <div class="p-8">
-              <h3 class="text-2xl font-semibold mb-3">VIP Regular</h3>
-              <p>
-                This is more home-based than luxury to give you that home
-                regular feel for relaxation.
-              </p>
-              <ul class="mt-6 space-y-3">
-                <li class="flex items-center gap-3">
-                  <i class="fas fa-check text-emerald-400"></i> Full-sized Bed
-                </li>
-                <li class="flex items-center gap-3">
-                  <i class="fas fa-check text-emerald-400"></i> Cable TV
-                </li>
-                <li class="flex items-center gap-3">
-                  <i class="fas fa-check text-emerald-400"></i> Daily
-                  Housekeeping
-                </li>
-                <li class="flex items-center gap-3">
-                  <i class="fas fa-check text-emerald-400"></i> Starting at
-                  ₦100,000/ per night
-                </li>
-              </ul>
-            </div>
+          <!-- VIP Regular -->
+          <div class="col-md-6 col-lg-4">
+            <a
+              href="rooms/vip-regular.html"
+              class="text-decoration-none text-white"
+            >
+              <div class="room-teaser card bg-dark border-0 shadow h-100">
+                <img
+                  src="rooms/Vip Regular.png"
+                  class="card-img-top"
+                  alt="VIP Regular"
+                />
+                <div class="card-body">
+                  <h5 class="card-title text-warning">VIP Regular</h5>
+                  <p class="card-text text-secondary">
+                    Home-like feel with TV & housekeeping
+                  </p>
+                  <p class="fw-bold text-warning">From ₦100,000 / night</p>
+                </div>
+              </div>
+            </a>
           </div>
 
-          <div class="room-card bg-zinc-900 rounded-3xl overflow-hidden">
-            <img
-              src="./rooms/Vip Desperate.png"
-              class="w-full h-64 object-cover"
-              alt="VIP Desperate"
-            />
-            <div class="p-8">
-              <h3 class="text-2xl font-semibold mb-3">VIP Desperate</h3>
-              <p>
-                If you don't mind the small space with a unique look of luxury,
-                then this room is for you.
-              </p>
-              <ul class="mt-6 space-y-3">
-                <li class="flex items-center gap-3">
-                  <i class="fas fa-check text-emerald-400"></i> Private bathroom
-                </li>
-                <li class="flex items-center gap-3">
-                  <i class="fas fa-check text-emerald-400"></i> Free wifi
-                  connection
-                </li>
-                <li class="flex items-center gap-3">
-                  <i class="fas fa-check text-emerald-400"></i> Starting at
-                  ₦70,000/ per night
-                </li>
-              </ul>
-            </div>
+          <!-- VIP Desperate -->
+          <div class="col-md-6 col-lg-4">
+            <a
+              href="rooms/vip-desperate.html"
+              class="text-decoration-none text-white"
+            >
+              <div class="room-teaser card bg-dark border-0 shadow h-100">
+                <img
+                  src="rooms/Vip Desperate.png"
+                  class="card-img-top"
+                  alt="VIP Desperate"
+                />
+                <div class="card-body">
+                  <h5 class="card-title text-warning">VIP Desperate</h5>
+                  <p class="card-text text-secondary">
+                    Cozy luxury in compact space
+                  </p>
+                  <p class="fw-bold text-warning">From ₦70,000 / night</p>
+                </div>
+              </div>
+            </a>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <hr class="border-zinc-800" />
-
-      <!-- Booking Calculator with Confirm Button -->
-      <section id="booking" class="max-w-7xl mx-auto px-6 py-20">
-        <h2 class="text-5xl font-bold text-center mb-8">
+    <!-- Booking Calculator -->
+    <section id="booking" class="py-5 bg-black">
+      <div class="container">
+        <h2 class="text-center display-5 fw-bold mb-5">
           Quick Booking Calculator
         </h2>
-        <p class="text-center text-zinc-400 mb-12">
-          Select a room and see your estimated total cost instantly.
-        </p>
-
-        <div class="max-w-md mx-auto bg-zinc-900 p-10 rounded-3xl">
-          <label for="roomSelect" class="block mb-3">Choose Room:</label>
-          <select
-            id="roomSelect"
-            class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4 text-white"
-          >
-            <option value="0">--Select a Room--</option>
-            <option value="7000">VIP Student (#7,000)</option>
-            <option value="25000">VIP Standard (#25,000)</option>
-            <option value="68000">VIP Major (#68,000)</option>
-            <option value="100000">VIP Regular (#100,000)</option>
-            <option value="70000">VIP Desperate (#70,000)</option>
-          </select>
-
-          <label for="nightsInput" class="block mt-8 mb-3"
-            >Number of Nights:</label
-          >
-          <input
-            type="number"
-            id="nightsInput"
-            min="1"
-            value="1"
-            class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4 text-white"
-          />
-
-          <p class="mt-10 text-3xl font-bold text-center">
-            Estimated Total: ₦<span id="totalPrice" class="text-amber-400"
-              >0</span
-            >
-          </p>
-
-          <button
-            id="confirmBookingBtn"
-            class="mt-10 w-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-5 rounded-2xl text-lg transition"
-          >
-            Confirm Booking & Send Request
-          </button>
-
-          <div id="bookingFeedback" class="mt-6 text-center"></div>
+        <div class="row justify-content-center">
+          <div class="col-lg-5">
+            <div class="card bg-dark border-light p-4 shadow">
+              <div class="mb-4">
+                <label class="form-label fw-semibold">Choose Room</label>
+                <select id="roomSelect" class="form-select form-select-lg">
+                  <option value="0">--Select a Room--</option>
+                  <option value="7000">VIP Student (#7,000)</option>
+                  <option value="25000">VIP Standard (#25,000)</option>
+                  <option value="68000">VIP Major (#68,000)</option>
+                  <option value="100000">VIP Regular (#100,000)</option>
+                  <option value="70000">VIP Desperate (#70,000)</option>
+                </select>
+              </div>
+              <div class="mb-4">
+                <label class="form-label fw-semibold">Number of Nights</label>
+                <input
+                  type="number"
+                  id="nightsInput"
+                  min="1"
+                  value="1"
+                  class="form-control form-control-lg"
+                />
+              </div>
+              <p class="fs-3 text-center fw-bold mb-4">
+                Estimated Total: ₦<span id="totalPrice" class="text-warning"
+                  >0</span
+                >
+              </p>
+              <button
+                id="confirmBookingBtn"
+                class="btn btn-success btn-lg w-100"
+              >
+                Confirm Booking & Send Request
+              </button>
+              <div id="bookingFeedback" class="mt-4 text-center"></div>
+            </div>
+          </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- Contact -->
-      <section id="contact" class="max-w-7xl mx-auto px-6 py-20">
-        <h2 class="text-5xl font-bold text-center mb-8">Get in Touch</h2>
-        <p class="text-center text-zinc-400 mb-10">
+    <!-- Contact -->
+    <section id="contact" class="py-5 bg-black">
+      <div class="container">
+        <h2 class="text-center display-5 fw-bold mb-4">Get in Touch</h2>
+        <p class="text-center text-secondary mb-4">
           Ready to book or have questions? Reach out to us!
         </p>
-        <p class="text-center mb-12">
+        <p class="text-center mb-5">
           <strong>Address:</strong> 33 Adeboyega Avenue, Lagos
         </p>
 
-        <form
-          id="inquiryForm"
-          class="max-w-md mx-auto bg-zinc-900 p-10 rounded-3xl"
-        >
-          <label for="name" class="block mb-2">Name:</label>
-          <input
-            type="text"
-            id="name"
-            required
-            class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4 mb-6"
-          />
-
-          <label for="email" class="block mb-2">Email:</label>
-          <input
-            type="email"
-            id="email"
-            required
-            class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4 mb-6"
-          />
-
-          <label for="message" class="block mb-2">Message:</label>
-          <textarea
-            id="message"
-            required
-            class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4 h-32"
-          ></textarea>
-
-          <button
-            type="submit"
-            class="w-full mt-8 bg-amber-400 hover:bg-amber-500 text-black font-semibold py-5 rounded-2xl"
-          >
-            Send Inquiry
-          </button>
+        <form id="inquiryForm" class="row g-3 justify-content-center">
+          <div class="col-md-6">
+            <label class="form-label">Name</label>
+            <input
+              type="text"
+              id="name"
+              required
+              class="form-control bg-dark text-light border-secondary"
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Email</label>
+            <input
+              type="email"
+              id="email"
+              required
+              class="form-control bg-dark text-light border-secondary"
+            />
+          </div>
+          <div class="col-12">
+            <label class="form-label">Message</label>
+            <textarea
+              id="message"
+              required
+              rows="5"
+              class="form-control bg-dark text-light border-secondary"
+            ></textarea>
+          </div>
+          <div class="col-12 text-center">
+            <button type="submit" class="btn btn-warning px-5 py-3 fw-semibold">
+              Send Inquiry
+            </button>
+          </div>
         </form>
-        <div id="formFeedback" class="text-center mt-8"></div>
-      </section>
-    </main>
+        <div id="formFeedback" class="mt-4 text-center"></div>
+      </div>
+    </section>
 
-    <footer class="bg-black py-12 text-center">
-      <p class="text-amber-400 text-2xl font-bold mb-2">BIZMAL HOTEL</p>
-      <p class="text-zinc-500">Built with ❤️ by Saviour Chibuzor Ekewuba</p>
-      <p class="text-xs text-zinc-600 mt-8">
+    <footer class="bg-black py-5 text-center border-top border-secondary">
+      <p class="text-warning fs-4 fw-bold mb-2">BIZMAL HOTEL</p>
+      <p class="text-secondary small">
+        Built with ❤️ by Saviour Chibuzor Ekewuba
+      </p>
+      <p class="text-muted small mt-3">
         © 2026 BIZMAL HOTEL. All rights reserved.
       </p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      // Mobile menu
-      document.getElementById("mobile-btn").addEventListener("click", () => {
-        document.getElementById("mobile-menu").classList.toggle("hidden");
-      });
+      // Calculator
+      document
+        .getElementById("roomSelect")
+        .addEventListener("change", updateTotal);
+      document
+        .getElementById("nightsInput")
+        .addEventListener("input", updateTotal);
 
-      // Live calculator
-      const roomSelect = document.getElementById("roomSelect");
-      const nightsInput = document.getElementById("nightsInput");
-      const totalPrice = document.getElementById("totalPrice");
-
-      function calculateTotal() {
-        const price = parseInt(roomSelect.value) || 0;
-        const nights = parseInt(nightsInput.value) || 0;
-        totalPrice.textContent = (price * nights).toLocaleString();
+      function updateTotal() {
+        const price =
+          parseInt(document.getElementById("roomSelect").value) || 0;
+        const nights =
+          parseInt(document.getElementById("nightsInput").value) || 0;
+        document.getElementById("totalPrice").textContent = (
+          price * nights
+        ).toLocaleString();
       }
-      roomSelect.addEventListener("change", calculateTotal);
-      nightsInput.addEventListener("input", calculateTotal);
 
-      // Confirm Booking Button
+      // Confirm booking
       document
         .getElementById("confirmBookingBtn")
         .addEventListener("click", () => {
-          const selectedOption = roomSelect.options[roomSelect.selectedIndex];
-          const roomName = selectedOption.textContent || "Room";
-          const nights = nightsInput.value || "0";
-          const total = totalPrice.textContent;
-
+          const select = document.getElementById("roomSelect");
+          const nights = document.getElementById("nightsInput").value;
+          const total = document.getElementById("totalPrice").textContent;
           const feedback = document.getElementById("bookingFeedback");
 
-          if (roomSelect.value === "0" || nights === "0") {
-            feedback.innerHTML = `<p class="text-red-400">Please select a room and number of nights.</p>`;
+          if (select.value === "0" || !nights || nights < 1) {
+            feedback.innerHTML =
+              '<p class="text-danger">Please select a room and enter a valid number of nights.</p>';
             return;
           }
 
+          const roomName = select.options[select.selectedIndex].text;
           feedback.innerHTML = `
-        <div class="bg-emerald-900 border border-emerald-400 rounded-2xl p-8">
-          <p class="text-emerald-400 text-2xl font-bold mb-3">✅ Booking Request Sent!</p>
-          <p class="text-zinc-300">Room: <strong>${roomName}</strong></p>
-          <p class="text-zinc-300">Nights: <strong>${nights}</strong></p>
-          <p class="text-amber-400 text-2xl font-semibold mt-4">Total: ₦${total}</p>
-          <p class="text-xs text-zinc-400 mt-6">Thank you! We will contact you shortly.</p>
+        <div class="alert alert-success">
+          <h5>✅ Booking Request Sent!</h5>
+          <p><strong>Room:</strong> ${roomName}</p>
+          <p><strong>Nights:</strong> ${nights}</p>
+          <p class="fs-5"><strong>Total:</strong> ₦${total}</p>
+          <small>Thank you! We will contact you shortly.</small>
         </div>
       `;
-
-          setTimeout(() => {
-            feedback.innerHTML = "";
-          }, 8000);
+          setTimeout(() => (feedback.innerHTML = ""), 10000);
         });
 
-      // Inquiry Form
-      document
-        .getElementById("inquiryForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-          document.getElementById("formFeedback").innerHTML =
-            `<p class="text-emerald-400 text-lg font-medium">✅ Thank you! Your inquiry has been received.</p>`;
-          this.reset();
-        });
-
-      // Smooth scroll
-      document.querySelectorAll('a[href^="#"]').forEach((link) => {
-        link.addEventListener("click", function (e) {
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            e.preventDefault();
-            target.scrollIntoView({ behavior: "smooth" });
-            document.getElementById("mobile-menu").classList.add("hidden");
-          }
-        });
+      // Contact form
+      document.getElementById("inquiryForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        document.getElementById("formFeedback").innerHTML =
+          '<p class="text-success">Thank you! Your message has been sent.</p>';
+        e.target.reset();
       });
     </script>
   </body>

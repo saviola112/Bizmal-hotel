@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function BookingForm({ rooms, prefilledRoom }) {
   const [formData, setFormData] = useState({
@@ -13,6 +14,8 @@ export default function BookingForm({ rooms, prefilledRoom }) {
 
   const [feedback, setFeedback] = useState({ type: "", message: "" });
   const [loading, setLoading] = useState(false);
+  const [bookingComplete, setBookingComplete] = useState(false);
+  const [submittedBooking, setSubmittedBooking] = useState(null);
 
   useEffect(() => {
     if (prefilledRoom) {
@@ -74,13 +77,6 @@ export default function BookingForm({ rooms, prefilledRoom }) {
 
     const apiUrl = import.meta.env.VITE_API_URL;
 
-    console.log("VITE_API_URL:", apiUrl);
-    console.log("Booking payload:", {
-      ...formData,
-      nights,
-      total,
-    });
-
     if (!apiUrl) {
       setFeedback({
         type: "error",
@@ -92,16 +88,18 @@ export default function BookingForm({ rooms, prefilledRoom }) {
     setLoading(true);
 
     try {
+      const payload = {
+        ...formData,
+        nights,
+        total,
+      };
+
       const response = await fetch(`${apiUrl}/api/bookings`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          ...formData,
-          nights,
-          total,
-        }),
+        body: JSON.stringify(payload),
       });
 
       let data;
@@ -115,6 +113,8 @@ export default function BookingForm({ rooms, prefilledRoom }) {
         throw new Error(data.message || "Booking failed.");
       }
 
+      setSubmittedBooking(payload);
+      setBookingComplete(true);
       setFeedback({
         type: "success",
         message: "Booking request sent successfully.",
@@ -125,7 +125,7 @@ export default function BookingForm({ rooms, prefilledRoom }) {
         guestPhone: "",
         guestEmail: "",
         guestCount: "1",
-        roomName: "",
+        roomName: prefilledRoom || "",
         checkIn: "",
         checkOut: "",
       });
@@ -140,6 +140,84 @@ export default function BookingForm({ rooms, prefilledRoom }) {
       setLoading(false);
     }
   };
+
+  const handleBookAnother = () => {
+    setBookingComplete(false);
+    setSubmittedBooking(null);
+    setFeedback({ type: "", message: "" });
+  };
+
+  if (bookingComplete && submittedBooking) {
+    return (
+      <div className="mt-14 rounded-[2rem] border border-green-500/20 bg-gradient-to-br from-zinc-900 to-black p-8 md:p-10">
+        <div className="max-w-2xl mx-auto text-center">
+          <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-green-500/10 border border-green-500/20">
+            <span className="text-4xl text-green-400">✓</span>
+          </div>
+
+          <p className="mt-6 text-green-400 font-medium">
+            Booking Request Sent
+          </p>
+
+          <h2 className="mt-3 text-3xl md:text-5xl font-bold leading-tight">
+            Thank you, {submittedBooking.guestName}
+          </h2>
+
+          <p className="mt-5 text-zinc-400 text-lg leading-8">
+            Your booking request has been sent successfully. We’ll review your
+            details and contact you shortly to confirm availability and next
+            steps.
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-4 md:grid-cols-2 max-w-3xl mx-auto">
+          <div className="rounded-3xl border border-white/10 bg-zinc-900 p-5">
+            <p className="text-sm text-zinc-400">Room</p>
+            <p className="mt-2 text-lg font-semibold text-yellow-500">
+              {submittedBooking.roomName}
+            </p>
+          </div>
+
+          <div className="rounded-3xl border border-white/10 bg-zinc-900 p-5">
+            <p className="text-sm text-zinc-400">Guests</p>
+            <p className="mt-2 text-lg font-semibold">
+              {submittedBooking.guestCount}
+            </p>
+          </div>
+
+          <div className="rounded-3xl border border-white/10 bg-zinc-900 p-5">
+            <p className="text-sm text-zinc-400">Check-In / Check-Out</p>
+            <p className="mt-2 text-lg font-semibold">
+              {submittedBooking.checkIn} → {submittedBooking.checkOut}
+            </p>
+          </div>
+
+          <div className="rounded-3xl border border-white/10 bg-zinc-900 p-5">
+            <p className="text-sm text-zinc-400">Estimated Total</p>
+            <p className="mt-2 text-lg font-semibold text-yellow-500">
+              ₦{Number(submittedBooking.total).toLocaleString()}
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <button
+            onClick={handleBookAnother}
+            className="rounded-full bg-yellow-500 px-6 py-3.5 font-semibold text-black hover:bg-yellow-400 transition"
+          >
+            Book Another Room
+          </button>
+
+          <Link
+            to="/"
+            className="rounded-full border border-yellow-500 px-6 py-3.5 font-semibold text-yellow-500 hover:bg-yellow-500 hover:text-black transition"
+          >
+            Return Home
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <form
@@ -262,7 +340,7 @@ export default function BookingForm({ rooms, prefilledRoom }) {
         </button>
       </div>
 
-      {feedback.message && (
+      {feedback.message && !bookingComplete && (
         <div
           className={`mt-6 rounded-2xl px-4 py-3 ${
             feedback.type === "success"
